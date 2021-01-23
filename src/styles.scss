@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+body{
+    min-width: 360px;
+
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+
+    --Bright-Blue: hsl(220, 98%, 61%);
+    --Check: -40deg,hsl(192, 100%, 67%) , hsl(280, 87%, 65%);
+}
+
+.lightTheme{
+    background-image: url('assets/images/bg-mobile-light.jpg');
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
+
+    --Very-Light-Gray: hsl(0, 0%, 98%);
+    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --Light-Grayish-Blue: hsl(233, 11%, 84%);
+    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+}
+
+.darkTheme{
+    background-image: url('assets/images/bg-mobile-dark.jpg');
+    background-color: var(--background);
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
+
+    --background: hsl(235, 21%, 11%);
+    --background-item: hsl(235, 24%, 19%);
+    --text-primary : white;
+
+    --text-list: hsl(234, 39%, 85%);
+    --text-listHover: hsl(236, 33%, 92%);
+    --text-listFinish: hsl(234, 11%, 52%);
+    --text-secondary1: hsl(233, 14%, 35%);
+    --text-secondary2: hsl(237, 14%, 26%);
+}
+
+@media screen and (min-width:1024px){
+    .lightTheme{
+        background-image: url('assets/images/bg-desktop-light.jpg');
+    }
+
+    .darkTheme{
+        background-image: url('assets/images/bg-desktop-dark.jpg');
+    }
+}

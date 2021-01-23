@@ -1,0 +1,26 @@
+<form class="newTodo grid" id="form">
+    <input type="checkbox" id="form__checkbox" class="newTodo__check"><input type="text" placeholder="Create a new todo.." class="newTodo__input" id="form__text">
+</form>
+
+<div class="list">
+    <div class="list__item" *ngFor="let item of list">
+        <div class="grid">
+            <div class="check" (click)="toogleStatus(item.id)" [ngClass]="{'check__active':item.status == true}">
+                <div *ngIf="item.status" class="check__img"></div>
+            </div>
+            <p class="list__text"> {{item.content}} </p>
+            <div class="cross" (click)="deleteWork(item.id)">
+                <img src="assets/images/icon-cross.svg" alt="cross" class="cross__img">
+            </div>
+        </div>
+    </div>
+    <p class="list__status">
+        <span>{{ count }} items left</span><span (click)="deleteComplete()">Clear Complete</span>
+    </p>
+</div>
+
+<p class="filter">
+    <span class="filter-active">All</span><span>Active</span><span>Complete</span>
+</p>
+
+<p class="note">Drag and drop to reorder list</p>
