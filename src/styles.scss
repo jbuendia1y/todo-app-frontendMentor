@@ -13,11 +13,11 @@ body{
 
 .lightTheme{
     background-image: url('assets/images/bg-mobile-light.jpg');
-    background-size: 100% 70%;
+    background-size: 100% 50%;
     background-repeat: no-repeat;
 
-    --Very-Light-Gray: hsl(0, 0%, 98%);
-    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --background: hsl(0, 0%, 98%);
+    --background-item: hsl(236, 33%, 92%);
     --Light-Grayish-Blue: hsl(233, 11%, 84%);
     --Dark-Grayish-Blue: hsl(236, 9%, 61%);
     --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
@@ -26,7 +26,7 @@ body{
 .darkTheme{
     background-image: url('assets/images/bg-mobile-dark.jpg');
     background-color: var(--background);
-    background-size: 100% 70%;
+    background-size: 100% 50%;
     background-repeat: no-repeat;
 
     --background: hsl(235, 21%, 11%);

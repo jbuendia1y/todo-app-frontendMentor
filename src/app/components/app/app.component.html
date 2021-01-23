@@ -1,8 +1,9 @@
 <header class="header">
   <h1 class="header__title">Todo</h1>
 
-  <div class="toogleTheme">
-    <img src="assets/images/icon-sun.svg" alt="sun">
+  <div class="toogleTheme" (click)="toogleTheme()">
+    <img src="assets/images/icon-sun.svg" alt="sun" *ngIf="theme == 'darkTheme'">
+    <img src="assets/images/icon-moon.svg" alt="moon" *ngIf="theme == 'lightTheme'">
   </div>
 </header>
 

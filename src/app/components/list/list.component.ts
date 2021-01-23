@@ -52,15 +52,17 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Verify LocalStorage Content
     if(localStorage.getItem('listWorks') == null){
       localStorage.setItem('listWorks',JSON.stringify(this.list))
     }else {
-      const listWorks:any = localStorage.getItem('listWorks')
-      this.list = JSON.parse(listWorks)
-      console.log(this.list)
+      this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
+      
       if(this.list.length - 1  <= 0) this.count = 0
       else if(this.list.length > 1) this.reloadCount()
     }
+
+    //Submit Event
     const form = document.getElementById('form')
     form?.addEventListener('submit',(e)=>{e.preventDefault();this.newWork()})
   }
@@ -76,6 +78,7 @@ export class ListComponent implements OnInit {
     }
 
     this.list.push(work)
+    this.saveStorage()
     this.reloadCount()
   }
 
@@ -104,5 +107,17 @@ export class ListComponent implements OnInit {
 
   saveStorage(){
     localStorage.setItem('listWorks',JSON.stringify(this.list))
+  }
+
+  filterby(name:string){
+    const backup = JSON.parse(<string>localStorage.getItem('listWorks'))
+    this.list = backup
+    if(name == 'all'){
+      this.list = backup
+    }else if(name == 'active'){
+      this.list = this.list.filter(item => item.status !== true)
+    }else if(name == 'complete'){
+      this.list = this.list.filter(item => item.status !== false)
+    }
   }
 }
