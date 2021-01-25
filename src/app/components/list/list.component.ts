@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { listContent } from '@interfaces/listContent'
 
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop'
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -99,5 +101,9 @@ export class ListComponent implements OnInit {
     this.list.push(data)
     this.saveStorage()
     this.reloadCount()
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.list, event.previousIndex, event.currentIndex);
   }
 }

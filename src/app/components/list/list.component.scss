@@ -8,10 +8,6 @@
         border-radius: 5px;
     }
 
-    &__item{
-        transition: all .5s;
-    }
-
     &__text{
         margin: 0;
         display: inline-block;
@@ -25,6 +21,7 @@
 
 .note{
     color: var(--text-secondary2);
+    text-align: center;
 }
 
 .check,.cross{

@@ -1,6 +1,6 @@
 <app-new-work-form [list]="list" (addItem)="pushToList($event)"></app-new-work-form>
-<div class="list">
-    <div class="list__item" *ngFor="let item of list">
+<div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
+    <div class="list__item" *ngFor="let item of list" cdkDrag>
         <div class="grid">
             <div class="check" (click)="toogleStatus(item.id)" [ngClass]="{'check__active':item.status == true}">
                 <div *ngIf="item.status" class="check__img"></div>
