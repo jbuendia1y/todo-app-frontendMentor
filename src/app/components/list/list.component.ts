@@ -61,25 +61,6 @@ export class ListComponent implements OnInit {
       if(this.list.length - 1  <= 0) this.count = 0
       else if(this.list.length > 1) this.reloadCount()
     }
-
-    //Submit Event
-    const form = document.getElementById('form')
-    form?.addEventListener('submit',(e)=>{e.preventDefault();this.newWork()})
-  }
-
-  newWork():void{
-    const text = <HTMLFormElement>document.getElementById('form__text')
-    const checkbox = <HTMLFormElement>document.getElementById('form__checkbox')
-
-    const work = {
-      id  : this.list.length,
-      content : text.value,
-      status : checkbox.checked
-    }
-
-    this.list.push(work)
-    this.saveStorage()
-    this.reloadCount()
   }
 
   toogleStatus(id:number){
@@ -109,15 +90,14 @@ export class ListComponent implements OnInit {
     localStorage.setItem('listWorks',JSON.stringify(this.list))
   }
 
-  filterby(name:string){
-    const backup = JSON.parse(<string>localStorage.getItem('listWorks'))
-    this.list = backup
-    if(name == 'all'){
-      this.list = backup
-    }else if(name == 'active'){
-      this.list = this.list.filter(item => item.status !== true)
-    }else if(name == 'complete'){
-      this.list = this.list.filter(item => item.status !== false)
-    }
+  filter(data:listContent[]){
+    this.list = data
+    this.reloadCount()
+  }
+
+  pushToList(data:listContent){
+    this.list.push(data)
+    this.saveStorage()
+    this.reloadCount()
   }
 }

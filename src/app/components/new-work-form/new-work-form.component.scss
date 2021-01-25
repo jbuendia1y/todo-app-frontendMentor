@@ -1,0 +1,48 @@
+.newTodo{
+
+    display: grid;
+    grid-template-columns: 10% 75% 10%;
+    align-items: center;
+    justify-content: start;
+
+    column-gap: .5em;
+    width: 100%;
+    box-sizing: border-box;
+
+    background-color: var(--background-item);
+    padding: .5em 1em;
+    border-radius: 5px;
+
+    margin-bottom: 1em;
+    &__input{
+        background-color: transparent;
+        border: none;
+        color: var(--text-secondary1);
+        -webkit-appearance: none;
+    }
+
+    &__check{
+        -webkit-appearance: none;
+
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+
+        border-radius: 50%;
+        border: 1px solid var(--text-secondary2);
+        transition: all .5s;
+
+        &-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        &:checked{
+            background: url('/assets/images/icon-check.svg'),linear-gradient(var(--Check));
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}

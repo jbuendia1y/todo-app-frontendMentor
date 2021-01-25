@@ -1,0 +1,6 @@
+<form class="newTodo grid" id="form">
+    <div class="newTodo__check-box">
+        <input [(ngModel)]="status" [ngModelOptions]="{standalone: true}" type="checkbox" id="form__checkbox" class="newTodo__check" aria-label="form__checkbox">
+    </div>
+    <input [(ngModel)]="text" [ngModelOptions]="{standalone: true}" type="text" placeholder="Create a new todo.." class="newTodo__input" id="form__text" aria-label="form__text">
+</form>
