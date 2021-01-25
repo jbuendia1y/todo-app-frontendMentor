@@ -2,11 +2,13 @@
     display: block;
     width: 90%;
     margin: 0 auto;
+    max-width: 324px;
 }
 
 .header{
     display: flex;
     align-items: center;
+    margin-bottom: 1em;
 
     &__title{
         margin: 0;
@@ -18,4 +20,11 @@
 
 .toogleTheme{
     margin-left: auto;
+}
+
+@media screen and (min-width:1024px){
+    :host{
+        width: 50%;
+        max-width: 640px;
+    }
 }

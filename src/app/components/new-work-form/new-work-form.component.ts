@@ -25,8 +25,14 @@ export class NewWorkFormComponent implements OnInit {
   status :boolean = false
 
   newWork():void{
+    let id:number = 0
+    if(this.list.length == 0) id = 0
+    else {
+      id = this.list[this.list.length - 1].id + 1
+    }
+
     const item:listContent = {
-      id : this.list.length,
+      id,
       content : this.text,
       status : this.status
     }

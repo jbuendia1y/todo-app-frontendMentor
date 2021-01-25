@@ -3,17 +3,24 @@
 }
 
 .list{
+    border-radius: 8px;
     &__item,&__status{
-        padding: .5em 1em;
+        padding: .7em 1em;
         border-radius: 5px;
+    }
+
+    &__item{
+        border-bottom: 1px solid var(--text-secondary2);
     }
 
     &__text{
         margin: 0;
         display: inline-block;
+        color: var(--text-list);
     }
 
     &__status{
+        margin: 0;
         display: flex;
         justify-content: space-between;
     }

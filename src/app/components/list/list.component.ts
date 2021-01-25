@@ -70,6 +70,7 @@ export class ListComponent implements OnInit {
       if(this.list[item].id == id){
         this.list[item].status = !this.list[item].status
         this.saveStorage()
+        
         if(this.list[item].status) this.count--
         else this.count++
       }
@@ -83,9 +84,11 @@ export class ListComponent implements OnInit {
   }
 
   deleteComplete(){
+    this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
     this.list = this.list.filter(item => item.status !== true)
     this.reloadCount()
     this.saveStorage()
+    this.moveToAll()
   }
 
   saveStorage(){
@@ -97,12 +100,22 @@ export class ListComponent implements OnInit {
     this.reloadCount()
   }
 
+  //Pushing new Obj to the list
   pushToList(data:listContent){
+    this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
     this.list.push(data)
+    console.log(this.list)
     this.saveStorage()
     this.reloadCount()
+    this.moveToAll()
   }
 
+  moveToAll(){
+    const all = document.getElementById('all')
+    all?.click()
+  }
+
+  //Drag & Drop Angular Material
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.list, event.previousIndex, event.currentIndex);
   }

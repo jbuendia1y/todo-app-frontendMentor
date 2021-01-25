@@ -20,13 +20,35 @@ export class ListFiltersComponent implements OnInit {
   filterby(name:string){
     const backup = JSON.parse(<string>localStorage.getItem('listWorks'))
     this.list = backup
-    if(name == 'all'){
+    if(name == 'All'){
       this.list = backup
-    }else if(name == 'active'){
+    }else if(name == 'Active'){
       this.list = this.list.filter(item => item.status !== true)
-    }else if(name == 'complete'){
+    }else if(name == 'Complete'){
       this.list = this.list.filter(item => item.status !== false)
     }
     this.filterBy.emit(this.list)
+    this.styled(name)
+  }
+
+  styled(name:string){
+    const filter = document.getElementById('filter')
+    const n = <number>filter?.children.length
+    for(let i=0; i<n ; i++){
+
+      if(filter?.children[i].textContent == name){
+
+        if(!filter?.children[i].classList.contains('filter__active')){
+          filter?.children[i].classList.toggle('filter__active')
+        }
+
+      }else{
+
+        if(filter?.children[i].classList.contains('filter__active')){
+          filter?.children[i].classList.toggle('filter__active')
+        }
+        
+      }
+    }
   }
 }

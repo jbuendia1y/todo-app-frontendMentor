@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 body{
+    margin: 0;
     min-width: 360px;
+
+    display: flex;
+    align-items: center;
 
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
@@ -13,14 +17,17 @@ body{
 
 .lightTheme{
     background-image: url('assets/images/bg-mobile-light.jpg');
+    background-color: var(--background);
     background-size: 100% 50%;
     background-repeat: no-repeat;
+
+    --text-primary : white;
 
     --background: hsl(0, 0%, 98%);
     --background-item: hsl(236, 33%, 92%);
     --Light-Grayish-Blue: hsl(233, 11%, 84%);
     --Dark-Grayish-Blue: hsl(236, 9%, 61%);
-    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --text-list: hsl(235, 19%, 35%);
 }
 
 .darkTheme{
@@ -50,4 +57,3 @@ body{
     }
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

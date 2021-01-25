@@ -1,8 +1,17 @@
 .filter{
     display: flex;
     justify-content: center;
+    color: var(--text-secondary1);
+    background-color: var(--background-item);
+
+    padding: .7em 0;
 
     &__item{
         margin: 0 .5em;
+        transition: all .5s;
+    }
+
+    &__active{
+        color: var(--Bright-Blue);
     }
 }
