@@ -17,8 +17,11 @@
     &__input{
         background-color: transparent;
         border: none;
-        color: var(--text-secondary1);
-        -webkit-appearance: none;
+        color: var(--text-filters);
+        
+        &:focus{
+            color: var(--text-listHover);
+        }
     }
 
     &__check{
@@ -29,7 +32,7 @@
         height: 25px;
 
         border-radius: 50%;
-        border: 1px solid var(--text-secondary2);
+        border: 1px solid var(--border);
         transition: all .5s;
 
         &-box{

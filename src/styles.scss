@@ -21,13 +21,15 @@ body{
     background-size: 100% 50%;
     background-repeat: no-repeat;
 
-    --text-primary : white;
+    --text-primary: white;
 
     --background: hsl(0, 0%, 98%);
-    --background-item: hsl(236, 33%, 92%);
-    --Light-Grayish-Blue: hsl(233, 11%, 84%);
-    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --background-item: hsl(0, 0%, 100%);
+    --border: hsl(233, 11%, 84%);
+    --text-complete: hsl(236, 9%, 61%);
+    --text-filters: hsl(236, 9%, 61%);
     --text-list: hsl(235, 19%, 35%);
+    --text-listHover : black;
 }
 
 .darkTheme{
@@ -35,16 +37,27 @@ body{
     background-color: var(--background);
     background-size: 100% 50%;
     background-repeat: no-repeat;
+    
+    --text-primary : white;
 
     --background: hsl(235, 21%, 11%);
     --background-item: hsl(235, 24%, 19%);
-    --text-primary : white;
 
-    --text-list: hsl(234, 39%, 85%);
+    --text: hsl(234, 39%, 85%);
     --text-listHover: hsl(236, 33%, 92%);
-    --text-listFinish: hsl(234, 11%, 52%);
-    --text-secondary1: hsl(233, 14%, 35%);
-    --text-secondary2: hsl(237, 14%, 26%);
+    --text-filters: hsl(234, 11%, 52%);
+    --border: hsl(233, 14%, 35%);
+    --text-complete: hsl(237, 14%, 26%);
+
+    /* 
+        --Very-Dark-Blue: hsl(235, 21%, 11%);//Background
+    --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);//Background List
+    --Light-Grayish-Blue: hsl(234, 39%, 85%);//Text
+    --Light-Grayish-Blue : hsl(236, 33%, 92%);//(hover) Text(List and buttons de list) hover and Focus
+    --Dark-Grayish-Blue: hsl(234, 11%, 52%);//text filters and no focus input
+    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);//Border of circle and border , tambien el texto clear complete y el de items left
+    --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);// Text cuando es completado una tarea y el texto drag and drop
+    */
 }
 
 @media screen and (min-width:1024px){

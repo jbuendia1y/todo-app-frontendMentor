@@ -104,7 +104,7 @@ export class ListComponent implements OnInit {
   pushToList(data:listContent){
     this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
     this.list.push(data)
-    console.log(this.list)
+    
     this.saveStorage()
     this.reloadCount()
     this.moveToAll()

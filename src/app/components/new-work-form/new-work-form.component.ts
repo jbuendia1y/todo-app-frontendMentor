@@ -25,6 +25,7 @@ export class NewWorkFormComponent implements OnInit {
   status :boolean = false
 
   newWork():void{
+    //id relative to the id of the last object
     let id:number = 0
     if(this.list.length == 0) id = 0
     else {

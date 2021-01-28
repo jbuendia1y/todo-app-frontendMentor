@@ -1,7 +1,7 @@
 .filter{
     display: flex;
     justify-content: center;
-    color: var(--text-secondary1);
+    color: var(--text-filters);
     background-color: var(--background-item);
 
     padding: .7em 0;
@@ -9,9 +9,26 @@
     &__item{
         margin: 0 .5em;
         transition: all .5s;
+
+        &:hover{
+            color: var(--text-listHover);
+        }
     }
 
     &__active{
         color: var(--Bright-Blue);
+
+        &:hover{
+            color: var(--Bright-Blue);
+        }
+    }
+}
+
+@media screen and (min-width:1024px){
+    .filter{
+        margin: 0;
+        &__item{
+            cursor: pointer;
+        }
     }
 }

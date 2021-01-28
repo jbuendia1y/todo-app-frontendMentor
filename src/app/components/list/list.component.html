@@ -2,7 +2,7 @@
 <div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
     <div class="list__item" *ngFor="let item of list" cdkDrag>
         <div class="grid">
-            <div class="check" (click)="toogleStatus(item.id)" [ngClass]="{'check__active':item.status == true}">
+            <div class="check" (click)="toogleStatus(item.id)" [ngClass]="{'check__active':item.status == true,'desactiveHover':item.status == true}">
                 <div *ngIf="item.status" class="check__img"></div>
             </div>
             <p class="list__text"> {{item.content}} </p>
@@ -12,10 +12,10 @@
         </div>
     </div>
     <p class="list__status">
-        <span>{{ count }} items left</span><span (click)="deleteComplete()">Clear Complete</span>
+        <span class="list__status-hover">{{ count }} items left</span>
+        <app-list-filters class="list__status-grid" [list]="list" (filterBy)="filter($event)"></app-list-filters>
+        <span class="list__status-hover" (click)="deleteComplete()">Clear Complete</span>
     </p>
 </div>
-
-<app-list-filters [list]="list" (filterBy)="filter($event)"></app-list-filters>
 
 <p class="note">Drag and drop to reorder list</p>

@@ -1,4 +1,4 @@
-.list,.newTodo{
+.newTodo{
     background-color: var(--background-item);
 }
 
@@ -6,28 +6,68 @@
     border-radius: 8px;
     &__item,&__status{
         padding: .7em 1em;
-        border-radius: 5px;
     }
 
     &__item{
-        border-bottom: 1px solid var(--text-secondary2);
+        border-bottom: 1px solid var(--border);
+        background-color: var(--background-item);
+
+        &:active{
+            transition: all .25s;
+            border-bottom: transparent;
+        }
     }
 
     &__text{
         margin: 0;
         display: inline-block;
-        color: var(--text-list);
+        color: var(--text);
+
+        &:hover{
+            color: var(--text-listHover);
+        }
     }
 
     &__status{
+        padding: 0;
         margin: 0;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto 1em auto;
+        color: var(--border);
+
+        &-hover{
+            padding: .7em 1em;
+            &:nth-child(1){
+                grid-column: 1/2;
+                grid-row: 1/2;
+                background-color: var(--background-item);
+            }
+
+            &:nth-last-child(1){
+                grid-column: 2/3;
+                grid-row: 1/2;
+
+                background-color: var(--background-item);
+
+                text-align: right;
+                white-space: nowrap;
+
+                &:hover{
+                    color: var(--text-listHover);
+                }
+            }
+        }
+
+        &-grid{
+            grid-column: 1/3;
+            grid-row: 3/4;
+        }
     }
 }
 
 .note{
-    color: var(--text-secondary2);
+    color: var(--text-complete);
     text-align: center;
 }
 
@@ -38,10 +78,15 @@
 }
 
 .check{
+    position: relative;
+    z-index: 5;
+
     border-radius: 50%;
-    border: 1px solid var(--text-secondary2);
+    border: 1px solid var(--border);
     transition: all .5s;
     &__active{
+        position: relative;
+        z-index: 101;
         background: linear-gradient(var(--Check));
         display: flex;
         align-items: center;
@@ -49,6 +94,8 @@
     }
 
     &__img{
+        position: relative;
+        z-index: 102;
         background-image: url('/assets/images/icon-check.svg');
         background-repeat: no-repeat;
         background-position: center;
@@ -56,12 +103,36 @@
         width: 100%;
         height: 100%;
     }
+
+    &:hover{
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(var(--background-item),var(--background-item)),
+                        linear-gradient(var(--Check));
+            background-origin: content-box,border-box;
+            background-clip: padding-box,border-box;
+            
+        }
+    }
 }
 
 .cross{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
     &__img{
         max-width: 100%;
     }
@@ -76,4 +147,42 @@
     column-gap: .5em;
     width: 100%;
     box-sizing: border-box;
+}
+
+.desactiveHover{
+    &:hover{
+        &::after{
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width:1024px){
+    .list{
+        &__status{
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            align-items: center;
+
+            background-color: var(--background-item);
+
+            &-hover{
+                transition: color .5s;
+
+                &:nth-last-child(1){
+                    grid-column: 3/4;
+                    cursor: pointer;
+                }
+            }
+            &-grid{
+                margin: 0;
+                grid-column: 2/3;
+                grid-row: 1/2;
+            }
+        }
+    }
+
+    .cross{
+        cursor: pointer;
+    }
 }
