@@ -1,12 +1,12 @@
 <app-new-work-form [list]="list" (addItem)="pushToList($event)"></app-new-work-form>
 <div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
-    <div class="list__item" *ngFor="let item of list" cdkDrag>
+    <div class="list__item" *ngFor="let item of list" (mouseover)="viewCross(item.id)" (mouseout)="hiddenCross(item.id)" cdkDrag>
         <div class="grid">
             <div class="check" (click)="toogleStatus(item.id)" [ngClass]="{'check__active':item.status == true,'desactiveHover':item.status == true}">
                 <div *ngIf="item.status" class="check__img"></div>
             </div>
-            <p class="list__text"> {{item.content}} </p>
-            <div class="cross" (click)="deleteWork(item.id)">
+            <p class="list__text" [ngClass]="{'list__text-complete':item.status == true}"> {{item.content}} </p>
+            <div class="cross" (click)="deleteWork(item.id)" id="{{item.id}}">
                 <img src="assets/images/icon-cross.svg" alt="cross" class="cross__img">
             </div>
         </div>

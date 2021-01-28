@@ -53,6 +53,15 @@ export class ListComponent implements OnInit {
     }
   }
 
+  saveStorage(){
+    localStorage.setItem('listWorks',JSON.stringify(this.list))
+  }
+
+  moveToAll(){
+    const all = document.getElementById('all')
+    all?.click()
+  }
+
   ngOnInit(): void {
     //Verify LocalStorage Content
     if(localStorage.getItem('listWorks') == null){
@@ -63,6 +72,16 @@ export class ListComponent implements OnInit {
       if(this.list.length - 1  <= 0) this.count = 0
       else if(this.list.length > 1) this.reloadCount()
     }
+  }
+
+  //Pushing new Obj to the list
+  pushToList(data:listContent){
+    this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
+    this.list.push(data)
+    
+    this.saveStorage()
+    this.reloadCount()
+    this.moveToAll()
   }
 
   toogleStatus(id:number){
@@ -83,6 +102,20 @@ export class ListComponent implements OnInit {
     this.saveStorage()
   }
 
+  viewCross(id:number){
+    if(window.screen.width >= 1024){
+      console.log('ssdsd')
+      const crossN = document.getElementById(`${id}`)
+      crossN?.classList.add('cross__active')
+    }
+  }
+  hiddenCross(id:number){
+    if(window.screen.width >= 1024){
+      const crossN = document.getElementById(`${id}`)
+      crossN?.classList.remove('cross__active')
+    }
+  }
+
   deleteComplete(){
     this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
     this.list = this.list.filter(item => item.status !== true)
@@ -91,28 +124,9 @@ export class ListComponent implements OnInit {
     this.moveToAll()
   }
 
-  saveStorage(){
-    localStorage.setItem('listWorks',JSON.stringify(this.list))
-  }
-
   filter(data:listContent[]){
     this.list = data
     this.reloadCount()
-  }
-
-  //Pushing new Obj to the list
-  pushToList(data:listContent){
-    this.list = JSON.parse(<string>localStorage.getItem('listWorks'))
-    this.list.push(data)
-    
-    this.saveStorage()
-    this.reloadCount()
-    this.moveToAll()
-  }
-
-  moveToAll(){
-    const all = document.getElementById('all')
-    all?.click()
   }
 
   //Drag & Drop Angular Material

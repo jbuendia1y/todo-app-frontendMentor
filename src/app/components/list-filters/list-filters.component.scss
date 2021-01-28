@@ -1,10 +1,11 @@
 .filter{
     display: flex;
     justify-content: center;
+    padding: 1em 0;
+
+    border-radius: 8px;
     color: var(--text-filters);
     background-color: var(--background-item);
-
-    padding: .7em 0;
 
     &__item{
         margin: 0 .5em;
@@ -27,6 +28,7 @@
 @media screen and (min-width:1024px){
     .filter{
         margin: 0;
+        border: 0;
         &__item{
             cursor: pointer;
         }

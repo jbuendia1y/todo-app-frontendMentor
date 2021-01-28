@@ -1,16 +1,20 @@
-.newTodo{
-    background-color: var(--background-item);
-}
-
 .list{
     border-radius: 8px;
     &__item,&__status{
-        padding: .7em 1em;
+        padding: 1em;
     }
 
     &__item{
         border-bottom: 1px solid var(--border);
         background-color: var(--background-item);
+
+        &:nth-child(1){
+            border-radius: 8px 8px 0 0;
+        }
+
+        &:nth-last-child(1){
+            border-radius: 0 0 8px 8px;
+        }
 
         &:active{
             transition: all .25s;
@@ -22,9 +26,20 @@
         margin: 0;
         display: inline-block;
         color: var(--text);
+        transition: text-decoration .25s, color .25s;
 
         &:hover{
             color: var(--text-listHover);
+        }
+        
+        &-complete{
+            color: var(--text-complete);
+            text-decoration: line-through;
+            text-decoration-color: var(--border);
+
+            &:hover{
+                color: var(--text-complete);
+            }
         }
     }
 
@@ -36,12 +51,15 @@
         grid-template-rows: auto 1em auto;
         color: var(--border);
 
+        border-radius: 8px;
+
         &-hover{
-            padding: .7em 1em;
+            padding: 1em;
             &:nth-child(1){
                 grid-column: 1/2;
                 grid-row: 1/2;
                 background-color: var(--background-item);
+                border-radius: 0 0 0 8px;
             }
 
             &:nth-last-child(1){
@@ -49,6 +67,7 @@
                 grid-row: 1/2;
 
                 background-color: var(--background-item);
+                border-radius: 0 0 8px 0;
 
                 text-align: right;
                 white-space: nowrap;
@@ -133,6 +152,7 @@
     align-items: center;
     justify-content: center;
     margin-left: auto;
+
     &__img{
         max-width: 100%;
     }
@@ -182,7 +202,20 @@
         }
     }
 
+    .check{
+        cursor: pointer;
+    }
+
     .cross{
         cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        
+        transition: opacity .25s;
+
+        &__active{
+            visibility: visible;
+            opacity: 1;
+        }
     }
 }
